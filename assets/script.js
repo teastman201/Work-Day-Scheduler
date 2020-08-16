@@ -28,7 +28,17 @@ $(".container").append(table);
         $(tr).append(td1, td2, td3);
         $(table).append(tr);
         td3.addClass('glyphicon glyphicon-floppy-save');
+        td2.addClass('input');
     }
+
+    // var saveButton = 
+    $('.glyphicon').click(function() {
+        var inputSave = $('.input').val();
+        localStorage.setItem('data', JSON.stringify(inputSave));
+        // alert('Your data was saved.');
+    });
+
+    console.log(localStorage);
         // $('table').append('<tr>');  }
     // $('.tRow').append('<td></td>');
 // }
