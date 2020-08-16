@@ -1,0 +1,25 @@
+Container: centered
+    Header 
+        Title of Project
+        Description of project
+        Today's Date
+        Bottom border - thick
+
+Container - centered
+    Form
+        3 columns
+            List items?
+            col-1: text - time 9 AM - 5PM hours
+                top, right, bottom border - thin dotted line
+                left border - hide
+                bootstrap icon?
+            col-2: input - text
+                background color
+                    selector to determine background color (importance)
+                padding top/bottom: 1-5px?
+            col-3: button - save
+                bootstrap save icon
+                    right - curved
+                    left - flat/stright
+                padding top/bottom: 1-5px?
+				
