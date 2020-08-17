@@ -22,7 +22,7 @@ console.log(curTime);
 var today = $('p').last().text(JSON.stringify(curDay));
 
 // Array to hold work day time (hours).
-var arrayOfTime = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM'];
+var arrayOfTime = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'];
 
 // Creates a table within the container element 
 var table = $('<table>').addClass("table");
@@ -32,7 +32,7 @@ $(".container").append(table);
 
 // Loop to populate first column with time (hours)
 for (i = 0; i < arrayOfTime.length; i++) {
-    
+
     // var arrayVar = arrayOfTime[3]; //[i+1];
     var tr = $('<tr></tr>');
     // tr.addClass('row');
@@ -46,38 +46,66 @@ for (i = 0; i < arrayOfTime.length; i++) {
     $(tr).append(td, inputData, btn1);
     $(table).append(tr);
     $('td').addClass('time-block hour');
-    td.addClass("hour" + [i]); 
+    td.addClass("hour" + [i]);
 
 
     // Moved from outside code block to inside since referencing values stored within the code block.
     // Creates unique classes for each input field
     var textVal0 = $('.hour0').text();
-var textVal1 = $('.hour1').text();
-var textVal2 = $('.hour2').text();
-var textVal3 = $('.hour3').text();
-var textVal4 = $('.hour4').text();
-var textVal5 = $('.hour5').text();
-var textVal6 = $('.hour6').text();
-var textVal7 = $('.hour7').text();
-var textVal8 = $('.hour8').text();
+    var textVal1 = $('.hour1').text();
+    var textVal2 = $('.hour2').text();
+    var textVal3 = $('.hour3').text();
+    var textVal4 = $('.hour4').text();
+    var textVal5 = $('.hour5').text();
+    var textVal6 = $('.hour6').text();
+    var textVal7 = $('.hour7').text();
+    var textVal8 = $('.hour8').text();
 
 
-// Moved from outside code block to inside since referencing variables stored within the code block.
-// Checks if the current time is equal to any of the values stored within hour block.
-    if (curTime === textVal0 || curTime === textVal1 || curTime === textVal2 || curTime === textVal3 || curTime === textVal4 || curTime === textVal5 || curTime === textVal6 || curTime === textVal7 || curTime === textVal8 ) {
-        inputData.addClass("present");
-    } 
+    // Moved from outside code block to inside since referencing variables stored within the code block.
+    // Checks if the current time is equal to any of the values stored within hour block.
+    // if (curTime === textVal0 || curTime === textVal1 || curTime === textVal2 || curTime === textVal3 || curTime === textVal4 || curTime === textVal5 || curTime === textVal6 || curTime === textVal7 || curTime === textVal8) {
+    //     inputData.addClass("present");
+    // }
+
+    // if (curTime === textVal0) {
+    //     return  inputData.addClass("present");
+    // }  if (curTime === textVal1) {
+    //     return  inputData.addClass("present");
+    // } 
+    // if (curTime === textVal2) {
+    //     return  inputData.addClass("present");
+    // } if (curTime === textVal3) {
+    //     return  inputData.addClass("present");
+    // } if (curTime === textVal4) {
+    //     return  inputData.addClass("present");
+    // } if (curTime === textVal5) {
+    //     return  inputData.addClass("present");
+    // } if (curTime === textVal6) {
+    //     return  inputData.addClass("present");
+    // } if (curTime === textVal7) {
+    //     return  inputData.addClass("present");
+    // } 
+    if (curTime === textVal8) {
+          inputData.addClass("present");
+    } else if (curTime !== textVal8 /* && curTime > textVal8 */) {
+        inputData.addClass("past");
+    } else if (curTime > textVal8) {
+        inputData.addClass("future");
+    }
     // Checks if the current time is great than any of the values stored within hour block.
-    if (textVal0 > curTime || textVal1 > curTime || textVal2 > curTime || textVal3 > curTime || textVal4 > curTime || textVal5 > curTime || textVal6 > curTime || textVal7 > curTime || textVal8 > curTime ) {
-        inputData.addClass("past");  
-    } 
+    // if (textVal0 > curTime || textVal1 > curTime || textVal2 > curTime || textVal3 > curTime || textVal4 > curTime || textVal5 > curTime || textVal6 > curTime || textVal7 > curTime || textVal8 > curTime) {
+    //     inputData.addClass("past");
+    // }
     // Checks if the current time is less than any of the values stored within hour block.
-    if (textVal0 < curTime || textVal1 < curTime || textVal2 < curTime || textVal3 < curTime || textVal4 < curTime || textVal5 < curTime || textVal6 < curTime || textVal7 < curTime || textVal8 < curTime ) {
-        // inputData.addClass("future");  
-    } 
+    // if (textVal0 < curTime || textVal1 < curTime || textVal2 < curTime || textVal3 < curTime || textVal4 < curTime || textVal5 < curTime || textVal6 < curTime || textVal7 < curTime || textVal8 < curTime) {
+    //     inputData.addClass("future");  
+    // }
+    // if (textVal8 < curTime && textVal8 > curTime){
+    //     inputData.addClass("future");
+    // }
+    console.log(textVal8)
 }
-
-
 
 // console.log(textVal5);
 
@@ -160,16 +188,12 @@ $('.glyphicon').click(function () {
     localStorage.setItem('9AM', JSON.stringify($('.input0').val()));
     localStorage.setItem('10AM', JSON.stringify($('.input1').val()));
     localStorage.setItem('11AM', JSON.stringify($('.input2').val()));
-    localStorage.setItem('12PM', JSON.stringify($('.input3').val()));localStorage.setItem('1PM', JSON.stringify($('.input4').val()));
+    localStorage.setItem('12PM', JSON.stringify($('.input3').val())); localStorage.setItem('1PM', JSON.stringify($('.input4').val()));
     localStorage.setItem('2PM', JSON.stringify($('.input5').val()));
     localStorage.setItem('3PM', JSON.stringify($('.input6').val()));
     localStorage.setItem('4PM', JSON.stringify($('.input7').val()));
     localStorage.setItem('5PM', JSON.stringify($('.input8').val()));
 });
-
-// $('.input:odd').css('background-color', '#5F9EA0');
-// $('.input:even').css('background-color', '#8FBC8F');
-// $('.glyphicon').css('background-color', '#1E90FF');
 
     // console.log($('.input').val());
     // $('.glyphicon').click(function() {
@@ -183,8 +207,6 @@ $('.glyphicon').click(function () {
     // });
 
 
-
-    // add mouseover event
 
 
 
