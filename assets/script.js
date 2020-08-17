@@ -32,6 +32,7 @@ $(".container").append(table);
 
 // Loop to populate first column with time (hours)
 for (i = 0; i < arrayOfTime.length; i++) {
+    
     // var arrayVar = arrayOfTime[3]; //[i+1];
     var tr = $('<tr></tr>');
     // tr.addClass('row');
@@ -45,10 +46,12 @@ for (i = 0; i < arrayOfTime.length; i++) {
     $(tr).append(td, inputData, btn1);
     $(table).append(tr);
     $('td').addClass('time-block hour');
-    td.addClass("hour" + [i]);    
-}
+    td.addClass("hour" + [i]); 
 
-var textVal0 = $('.hour0').text();
+
+    // Moved from outside code block to inside since referencing values stored within the code block.
+    // Creates unique classes for each input field
+    var textVal0 = $('.hour0').text();
 var textVal1 = $('.hour1').text();
 var textVal2 = $('.hour2').text();
 var textVal3 = $('.hour3').text();
@@ -58,23 +61,59 @@ var textVal6 = $('.hour6').text();
 var textVal7 = $('.hour7').text();
 var textVal8 = $('.hour8').text();
 
-// Is there a difference between textVal0 === curTime and curTime === textVal0?
-if (curTime === textVal0 || curTime === textVal1 || curTime === textVal2 || curTime === textVal3 || curTime === textVal4 || curTime === textVal5 || curTime === textVal6 || curTime === textVal7 || curTime === textVal8 ) {
-    inputData.addClass("present");
-} 
 
-if (textVal0 > curTime || textVal1 > curTime || textVal2 > curTime || textVal3 > curTime || textVal4 > curTime || textVal5 > curTime || textVal6 > curTime || textVal7 > curTime || textVal8 > curTime ) {
-    inputData.addClass("past");  
-} 
+// Moved from outside code block to inside since referencing variables stored within the code block.
+// Checks if the current time is equal to any of the values stored within hour block.
+    if (curTime === textVal0 || curTime === textVal1 || curTime === textVal2 || curTime === textVal3 || curTime === textVal4 || curTime === textVal5 || curTime === textVal6 || curTime === textVal7 || curTime === textVal8 ) {
+        inputData.addClass("present");
+    } 
+    // Checks if the current time is great than any of the values stored within hour block.
+    if (textVal0 > curTime || textVal1 > curTime || textVal2 > curTime || textVal3 > curTime || textVal4 > curTime || textVal5 > curTime || textVal6 > curTime || textVal7 > curTime || textVal8 > curTime ) {
+        inputData.addClass("past");  
+    } 
+    // Checks if the current time is less than any of the values stored within hour block.
+    if (textVal0 < curTime || textVal1 < curTime || textVal2 < curTime || textVal3 < curTime || textVal4 < curTime || textVal5 < curTime || textVal6 < curTime || textVal7 < curTime || textVal8 < curTime ) {
+        // inputData.addClass("future");  
+    } 
+}
 
-if (textVal0 < curTime || textVal1 < curTime || textVal2 < curTime || textVal3 < curTime || textVal4 < curTime || textVal5 < curTime || textVal6 < curTime || textVal7 < curTime || textVal8 < curTime ) {
-    inputData.addClass("future");  
-} 
+
+
+// console.log(textVal5);
+
+// if (curTime === textVal0) {
+//     inputData.addClass("present");
+//     console.log('yes1');
+// } 
+
+// if (textVal0 > curTime) {
+//     inputData.addClass("past");
+//     console.log('yes2');
+// } 
+
+// if (textVal0 < curTime) {
+//     inputData.addClass("future");
+//     console.log('yes3');
+// } 
+
+
+// if (curTime === textVal0 || curTime === textVal1 || curTime === textVal2 || curTime === textVal3 || curTime === textVal4 || curTime === textVal5 || curTime === textVal6 || curTime === textVal7 || curTime === textVal8 ) {
+//     inputData.addClass("present");
+// } 
+
+// if (textVal0 > curTime || textVal1 > curTime || textVal2 > curTime || textVal3 > curTime || textVal4 > curTime || textVal5 > curTime || textVal6 > curTime || textVal7 > curTime || textVal8 > curTime ) {
+//     inputData.addClass("past");  
+// } 
+
+// if (textVal0 < curTime || textVal1 < curTime || textVal2 < curTime || textVal3 < curTime || textVal4 < curTime || textVal5 < curTime || textVal6 < curTime || textVal7 < curTime || textVal8 < curTime ) {
+//     inputData.addClass("future");  
+// } 
+
 // else if (curTime < textVal){
 //     inputData.addClass("future");
 // }
 
-console.log(textVal0 >= curTime);
+// console.log(textVal0 > curTime);
 
 // var a = [];
 //   for ( var i = 0; i < textVal.length; i++ ) {
