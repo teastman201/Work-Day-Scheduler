@@ -17,9 +17,7 @@ $(".container").append(table);
          var tr = $('<tr></tr>');
          var td1 = $('<td></td>').text(arrayOfTime[i]);
          var td2 = $('<input type="text"/>');
-         td2.addClass('input');
-         
-         //  td1.addClass(var1);
+        td2.addClass("input" + [i]);
          var td3 = $('<button></button>');
          td3.addClass('glyphicon glyphicon-floppy-save');
          td3.addClass(var1);
@@ -32,40 +30,48 @@ $(".container").append(table);
     //     tdClass.addClass(arrayOfTime[i]); 
     // }
     var inputSave = $('.input').val();
-    $('.9AM').click(function(){
-        localStorage.setItem('9AM', JSON.stringify(inputSave));
+    $('.9AM').click(function(){ 
+        localStorage.setItem('9AM', JSON.stringify($('.input0').val()));
     });
     $('.10AM').click(function(){
-        localStorage.setItem('10AM', JSON.stringify(inputSave));
+        localStorage.setItem('10AM', JSON.stringify($('.input1').val()));
     });
     $('.11AM').click(function(){
-        localStorage.setItem('11AM', JSON.stringify(inputSave));
+        localStorage.setItem('11AM', JSON.stringify($('.input2').val()));
     });
     $('.12PM').click(function(){
-        localStorage.setItem('12PM', JSON.stringify(inputSave));
+        localStorage.setItem('12PM', JSON.stringify($('.input3').val()));
+    });
+    $('.1PM').click(function(){
+        localStorage.setItem('1PM', JSON.stringify($('.input4').val()));
+    });
+    $('.2PM').click(function(){
+        localStorage.setItem('2PM', JSON.stringify($('.input5').val()));
+    });
+    $('.3PM').click(function(){
+        localStorage.setItem('3PM', JSON.stringify($('.input6').val()));
+    });
+    $('.4PM').click(function(){
+        localStorage.setItem('4PM', JSON.stringify($('.input7').val()));
     });
     $('.5PM').click(function(){
-        localStorage.clear();
+        localStorage.setItem('5PM', JSON.stringify($('.input8').val()));
     });    
-    console.log(inputSave);
+    // console.log($('.input').val());
     // $('.glyphicon').click(function() {
-
-
         // $.each([ 'car', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM' ], function(index, value) {
         //     alert( index + ": " + value );
         // });
-        var2 = $(td2).text();
-        
-        localStorage.setItem(var1, JSON.stringify(inputSave));
+        // var2 = $(td2).text();        
+        // localStorage.setItem(var1, JSON.stringify(inputSave));
         // alert('Your data was saved.');
-        console.log(var2);
+        // console.log(var2);
     // });
 
 
 
     // add mouseover event
 
-    // add separate button to clear local storage
-
+  
     
      
