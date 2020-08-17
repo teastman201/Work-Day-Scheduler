@@ -1,11 +1,12 @@
 // Calls server to get current day, month, date, and year
 var curDay = moment().format('dddd, MMMM Do YYYY');
-var curTime = moment().format('h:mm:ss a');
-var notTime = moment().format('hA');
-var myTime = '7:56 am';
+// var curTime = moment().format('h:mm:ss a');
+var curTime = moment().format('hA');
+// var myTime = '7:56 am';
+console.log(curTime);
 
 
-console.log(notTime);
+// console.log(notTime);
 // console.log(myTime);
 // if (notTime != myTime){
 //     alert("message");
@@ -21,11 +22,13 @@ console.log(notTime);
 var today = $('p').last().text(JSON.stringify(curDay));
 
 // Array to hold work day time (hours).
-var arrayOfTime = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM'];
+var arrayOfTime = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM'];
 
 // Creates a table within the container element 
 var table = $('<table>').addClass("table");
 $(".container").append(table);
+
+
 
 // Loop to populate first column with time (hours)
 for (i = 0; i < arrayOfTime.length; i++) {
@@ -41,40 +44,70 @@ for (i = 0; i < arrayOfTime.length; i++) {
     btn1.addClass(arrayOfTime[i]); //arrayVar
     $(tr).append(td, inputData, btn1);
     $(table).append(tr);
-    $('td').addClass('time-block hour');
-    console.log(td);
+    $('td').addClass('time-block hour');    
 }
 
+var textVal = $('.hour').text();
+
+if (curTime === textVal){
+    inputData.addClass("present");
+} 
+else if (textVal > curTime) {
+    inputData.addClass("past");  
+} 
+// else if (curTime < textVal){
+//     inputData.addClass("future");
+// }
+
+console.log(textVal);
+
+// var a = [];
+//   for ( var i = 0; i < textVal.length; i++ ) {
+//     a.push( textVal[ i ] );
+//   }
+// console.log(a);
 // for (i = 0; i < arrayOfTime.length; i++) {
 //     var tdClass = $('td');
 //     tdClass.addClass(arrayOfTime[i]); 
 // }
 var inputSave = $('.input').val();
-$('.9AM').click(function () {
+
+// $('.9AM').click(function () {
+//     localStorage.setItem('9AM', JSON.stringify($('.input0').val()));
+// });
+// $('.10AM').click(function () {
+//     localStorage.setItem('10AM', JSON.stringify($('.input1').val()));
+// });
+// $('.11AM').click(function () {
+//     localStorage.setItem('11AM', JSON.stringify($('.input2').val()));
+// });
+// $('.12PM').click(function () {
+//     localStorage.setItem('12PM', JSON.stringify($('.input3').val()));
+// });
+// $('.1PM').click(function () {
+//     localStorage.setItem('1PM', JSON.stringify($('.input4').val()));
+// });
+// $('.2PM').click(function () {
+//     localStorage.setItem('2PM', JSON.stringify($('.input5').val()));
+// });
+// $('.3PM').click(function () {
+//     localStorage.setItem('3PM', JSON.stringify($('.input6').val()));
+// });
+// $('.4PM').click(function () {
+//     localStorage.setItem('4PM', JSON.stringify($('.input7').val()));
+// });
+// $('.5PM').click(function () {
+//     localStorage.setItem('5PM', JSON.stringify($('.input8').val()));
+// });
+
+$('.glyphicon').click(function () {
     localStorage.setItem('9AM', JSON.stringify($('.input0').val()));
-});
-$('.10AM').click(function () {
     localStorage.setItem('10AM', JSON.stringify($('.input1').val()));
-});
-$('.11AM').click(function () {
     localStorage.setItem('11AM', JSON.stringify($('.input2').val()));
-});
-$('.12PM').click(function () {
-    localStorage.setItem('12PM', JSON.stringify($('.input3').val()));
-});
-$('.1PM').click(function () {
-    localStorage.setItem('1PM', JSON.stringify($('.input4').val()));
-});
-$('.2PM').click(function () {
+    localStorage.setItem('12PM', JSON.stringify($('.input3').val()));localStorage.setItem('1PM', JSON.stringify($('.input4').val()));
     localStorage.setItem('2PM', JSON.stringify($('.input5').val()));
-});
-$('.3PM').click(function () {
     localStorage.setItem('3PM', JSON.stringify($('.input6').val()));
-});
-$('.4PM').click(function () {
     localStorage.setItem('4PM', JSON.stringify($('.input7').val()));
-});
-$('.5PM').click(function () {
     localStorage.setItem('5PM', JSON.stringify($('.input8').val()));
 });
 
