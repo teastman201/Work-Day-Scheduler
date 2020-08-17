@@ -25,9 +25,11 @@ textarea{
   white-space: pre-wrap;
 }
 
+/* Added width property for better aesthetics */
 .time-block{
   text-align: center;
   border-radius: 15px;
+  width: 10%;
 }
 
 .row {
@@ -57,12 +59,15 @@ textarea{
   color: white;
 }
 
+/* Added width and height to button for better aesthetics */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  height: 80px;
+  width: 80px;
 }
 
 .saveBtn i:hover {
@@ -70,10 +75,13 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-td {
-  width: 10%;
-}
-
+/* Sets width of user input area */
 input {
   width: 80%;
+  height: 80px;
+
+  /* Attempted to get the text to wrap within the input field*/
+  word-break: break-word;
+  vertical-align: top;
 }
+
