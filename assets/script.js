@@ -1,9 +1,8 @@
 // Calls server to get current day, month, date, and year to display in header
 var curDay = moment().format('dddd, MMMM Do YYYY');
+
 // current time in 24 hours.
 var curTime = parseInt(moment().format('H'));
-// var myTime = '7:56 am';
-console.log(curTime);
 
 // Creates new p element and adds date information to the text area
 var today = $('p').last().text(JSON.stringify(curDay));
@@ -21,10 +20,7 @@ for (i = 9; i < 18; i++) {
     // Dynamically creates table row and table data.
     var tr = $('<tr></tr>');
     var td = $('<td></td>');
-    // Dynamically adds 2 bootstrap classes to all table data.
-    $('td').addClass('time-block hour');
-    // Dynamically adds a unique class to each table data based off of the array.
-    td.addClass("hour" + [i]);
+    
 
     // Creates button, adds bootstrap classes to button. As the loop iterates it adds a class to the button relative to the array item.
     var btn1 = $('<button></button>');
@@ -49,9 +45,15 @@ for (i = 9; i < 18; i++) {
 
     // Dynamically appends table data, input field, and button to the table row.    
     $(tr).append(td, inputData, btn1);
+
     // Dynamically appends the table row to the table
-    $(table).append(tr);
+    $(table).append(tr);    
+
+    // Dynamically adds 2 bootstrap classes to all table data.
+    $('td').addClass('time-block hour');
     
+    // Dynamically adds a unique class to each table data based off of the array.
+    td.addClass("hour" + [i]);
     
     // Sets text information of the table data
     var textVal0 = $('.hour9').text('9AM');
@@ -76,9 +78,6 @@ for (i = 9; i < 18; i++) {
         localStorage.setItem('16', JSON.stringify($('.input16').val()));
         localStorage.setItem('17', JSON.stringify($('.input17').val()));
     });
-
-
-
 
 }
 
