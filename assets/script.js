@@ -1,212 +1,84 @@
-// Calls server to get current day, month, date, and year
+// Calls server to get current day, month, date, and year to display in header
 var curDay = moment().format('dddd, MMMM Do YYYY');
-// var curTime = moment().format('h:mm:ss a');
-var curTime = moment().format('hA');
+// current time in 24 hours.
+var curTime = parseInt(moment().format('H'));
 // var myTime = '7:56 am';
 console.log(curTime);
-
-
-// console.log(notTime);
-// console.log(myTime);
-// if (notTime != myTime){
-//     alert("message");
-// } else {
-//     alert("they are the same");
-// }
-
-
-// var maxTime = moment('2020-01-01').min('2016-02-01').format()
-// "2016-02-01T00:00:00-06:00"
 
 // Creates new p element and adds date information to the text area
 var today = $('p').last().text(JSON.stringify(curDay));
 
 // Array to hold work day time (hours).
-var arrayOfTime = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'];
+var arrayOfTime = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 // Creates a table within the container element 
 var table = $('<table>').addClass("table");
 $(".container").append(table);
 
-
-
 // Loop to populate first column with time (hours)
-for (i = 0; i < arrayOfTime.length; i++) {
+for (i = 9; i < 18; i++) {
 
-    // var arrayVar = arrayOfTime[3]; //[i+1];
+    // Dynamically creates table row and table data.
     var tr = $('<tr></tr>');
-    // tr.addClass('row');
-    var td = $('<td></td>').text(arrayOfTime[i]);
-    var inputData = $('<input type="text"/>');
-    inputData.addClass("input" + [i]);
-    inputData.addClass("input");
-    var btn1 = $('<button></button>');
-    btn1.addClass('glyphicon glyphicon-floppy-save saveBtn');
-    btn1.addClass(arrayOfTime[i]); //arrayVar
-    $(tr).append(td, inputData, btn1);
-    $(table).append(tr);
+    var td = $('<td></td>');
+    // Dynamically adds 2 bootstrap classes to all table data.
     $('td').addClass('time-block hour');
+    // Dynamically adds a unique class to each table data based off of the array.
     td.addClass("hour" + [i]);
 
+    // Creates button, adds bootstrap classes to button. As the loop iterates it adds a class to the button relative to the array item.
+    var btn1 = $('<button></button>');
+    btn1.addClass('glyphicon glyphicon-floppy-save saveBtn');
+    btn1.addClass(arrayOfTime[i]); 
 
-    // Moved from outside code block to inside since referencing values stored within the code block.
-    // Creates unique classes for each input field
-    var textVal0 = $('.hour0').text();
-    var textVal1 = $('.hour1').text();
-    var textVal2 = $('.hour2').text();
-    var textVal3 = $('.hour3').text();
-    var textVal4 = $('.hour4').text();
-    var textVal5 = $('.hour5').text();
-    var textVal6 = $('.hour6').text();
-    var textVal7 = $('.hour7').text();
-    var textVal8 = $('.hour8').text();
+    // Dynamically creates an input field
+    var inputData = $('<input type="text"/>');
+    // Dynamically addes a unique class to the input field.
+    inputData.addClass("input" + [i]);
+    // Dynamically adds a unverisal class to all input fields.
+    inputData.addClass("input");
 
-
-    // Moved from outside code block to inside since referencing variables stored within the code block.
-    // Checks if the current time is equal to any of the values stored within hour block.
-    // if (curTime === textVal0 || curTime === textVal1 || curTime === textVal2 || curTime === textVal3 || curTime === textVal4 || curTime === textVal5 || curTime === textVal6 || curTime === textVal7 || curTime === textVal8) {
-    //     inputData.addClass("present");
-    // }
-
-    // if (curTime === textVal0) {
-    //     return  inputData.addClass("present");
-    // }  if (curTime === textVal1) {
-    //     return  inputData.addClass("present");
-    // } 
-    // if (curTime === textVal2) {
-    //     return  inputData.addClass("present");
-    // } if (curTime === textVal3) {
-    //     return  inputData.addClass("present");
-    // } if (curTime === textVal4) {
-    //     return  inputData.addClass("present");
-    // } if (curTime === textVal5) {
-    //     return  inputData.addClass("present");
-    // } if (curTime === textVal6) {
-    //     return  inputData.addClass("present");
-    // } if (curTime === textVal7) {
-    //     return  inputData.addClass("present");
-    // } 
-    if (curTime === textVal8) {
-          inputData.addClass("present");
-    } else if (curTime !== textVal8 /* && curTime > textVal8 */) {
-        inputData.addClass("past");
-    } else if (curTime > textVal8) {
-        inputData.addClass("future");
+    // Checks if the current time is equal to, less than, or greater than the set value
+    if (i < curTime) {
+        inputData.addClass('past')
+    } else if (i === curTime) {
+        inputData.addClass('present')
+    } else {
+        inputData.addClass('future')
     }
-    // Checks if the current time is great than any of the values stored within hour block.
-    // if (textVal0 > curTime || textVal1 > curTime || textVal2 > curTime || textVal3 > curTime || textVal4 > curTime || textVal5 > curTime || textVal6 > curTime || textVal7 > curTime || textVal8 > curTime) {
-    //     inputData.addClass("past");
-    // }
-    // Checks if the current time is less than any of the values stored within hour block.
-    // if (textVal0 < curTime || textVal1 < curTime || textVal2 < curTime || textVal3 < curTime || textVal4 < curTime || textVal5 < curTime || textVal6 < curTime || textVal7 < curTime || textVal8 < curTime) {
-    //     inputData.addClass("future");  
-    // }
-    // if (textVal8 < curTime && textVal8 > curTime){
-    //     inputData.addClass("future");
-    // }
-    console.log(textVal8)
+
+    // Dynamically appends table data, input field, and button to the table row.    
+    $(tr).append(td, inputData, btn1);
+    // Dynamically appends the table row to the table
+    $(table).append(tr);
+    
+    
+    // Sets text information of the table data
+    var textVal0 = $('.hour9').text('9AM');
+    var textVal1 = $('.hour10').text('10AM');
+    var textVal2 = $('.hour11').text('11AM');
+    var textVal3 = $('.hour12').text('12PM');
+    var textVal4 = $('.hour13').text('1PM');
+    var textVal5 = $('.hour14').text('2PM');
+    var textVal6 = $('.hour15').text('3PM');
+    var textVal7 = $('.hour16').text('4PM');
+    var textVal8 = $('.hour17').text('5PM');
+
+    // Saves data in input field to localstorage with a key referencing the hour.
+    $('.glyphicon').click(function () {
+        localStorage.setItem('9', JSON.stringify($('.input9').val()));
+        localStorage.setItem('10', JSON.stringify($('.input10').val()));
+        localStorage.setItem('11', JSON.stringify($('.input11').val()));
+        localStorage.setItem('12', JSON.stringify($('.input12').val()));
+        localStorage.setItem('13', JSON.stringify($('.input13').val()));
+        localStorage.setItem('14', JSON.stringify($('.input14').val()));
+        localStorage.setItem('15', JSON.stringify($('.input15').val()));
+        localStorage.setItem('16', JSON.stringify($('.input16').val()));
+        localStorage.setItem('17', JSON.stringify($('.input17').val()));
+    });
+
+
+
+
 }
-
-// console.log(textVal5);
-
-// if (curTime === textVal0) {
-//     inputData.addClass("present");
-//     console.log('yes1');
-// } 
-
-// if (textVal0 > curTime) {
-//     inputData.addClass("past");
-//     console.log('yes2');
-// } 
-
-// if (textVal0 < curTime) {
-//     inputData.addClass("future");
-//     console.log('yes3');
-// } 
-
-
-// if (curTime === textVal0 || curTime === textVal1 || curTime === textVal2 || curTime === textVal3 || curTime === textVal4 || curTime === textVal5 || curTime === textVal6 || curTime === textVal7 || curTime === textVal8 ) {
-//     inputData.addClass("present");
-// } 
-
-// if (textVal0 > curTime || textVal1 > curTime || textVal2 > curTime || textVal3 > curTime || textVal4 > curTime || textVal5 > curTime || textVal6 > curTime || textVal7 > curTime || textVal8 > curTime ) {
-//     inputData.addClass("past");  
-// } 
-
-// if (textVal0 < curTime || textVal1 < curTime || textVal2 < curTime || textVal3 < curTime || textVal4 < curTime || textVal5 < curTime || textVal6 < curTime || textVal7 < curTime || textVal8 < curTime ) {
-//     inputData.addClass("future");  
-// } 
-
-// else if (curTime < textVal){
-//     inputData.addClass("future");
-// }
-
-// console.log(textVal0 > curTime);
-
-// var a = [];
-//   for ( var i = 0; i < textVal.length; i++ ) {
-//     a.push( textVal[ i ] );
-//   }
-// console.log(a);
-// for (i = 0; i < arrayOfTime.length; i++) {
-//     var tdClass = $('td');
-//     tdClass.addClass(arrayOfTime[i]); 
-// }
-var inputSave = $('.input').val();
-
-// On click of specific save button, data in adjacent field will be saved to local storage
-// $('.9AM').click(function () {
-//     localStorage.setItem('9AM', JSON.stringify($('.input0').val()));
-// });
-// $('.10AM').click(function () {
-//     localStorage.setItem('10AM', JSON.stringify($('.input1').val()));
-// });
-// $('.11AM').click(function () {
-//     localStorage.setItem('11AM', JSON.stringify($('.input2').val()));
-// });
-// $('.12PM').click(function () {
-//     localStorage.setItem('12PM', JSON.stringify($('.input3').val()));
-// });
-// $('.1PM').click(function () {
-//     localStorage.setItem('1PM', JSON.stringify($('.input4').val()));
-// });
-// $('.2PM').click(function () {
-//     localStorage.setItem('2PM', JSON.stringify($('.input5').val()));
-// });
-// $('.3PM').click(function () {
-//     localStorage.setItem('3PM', JSON.stringify($('.input6').val()));
-// });
-// $('.4PM').click(function () {
-//     localStorage.setItem('4PM', JSON.stringify($('.input7').val()));
-// });
-// $('.5PM').click(function () {
-//     localStorage.setItem('5PM', JSON.stringify($('.input8').val()));
-// });
-
-// On click of any save button, any data in the input field(s) will be saved to local storage
-$('.glyphicon').click(function () {
-    localStorage.setItem('9AM', JSON.stringify($('.input0').val()));
-    localStorage.setItem('10AM', JSON.stringify($('.input1').val()));
-    localStorage.setItem('11AM', JSON.stringify($('.input2').val()));
-    localStorage.setItem('12PM', JSON.stringify($('.input3').val())); localStorage.setItem('1PM', JSON.stringify($('.input4').val()));
-    localStorage.setItem('2PM', JSON.stringify($('.input5').val()));
-    localStorage.setItem('3PM', JSON.stringify($('.input6').val()));
-    localStorage.setItem('4PM', JSON.stringify($('.input7').val()));
-    localStorage.setItem('5PM', JSON.stringify($('.input8').val()));
-});
-
-    // console.log($('.input').val());
-    // $('.glyphicon').click(function() {
-        // $.each([ 'car', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM' ], function(index, value) {
-        //     alert( index + ": " + value );
-        // });
-        // var2 = $(inputData).text();        
-        // localStorage.setItem(arrayVar, JSON.stringify(inputSave));
-        // alert('Your data was saved.');
-        // console.log(var2);
-    // });
-
-
-
-
 
