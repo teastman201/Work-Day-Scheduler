@@ -5,4 +5,4 @@ Blocks that exist in the future have a background color of green.
 The present block has a color of red.
 
 https://teastman201.github.io/Work-Day-Scheduler/
-<img src="./Assets/image.png" alt="screenshot of work-day-scheduler">
+<img src="./assets/image.png" alt="screenshot of work-day-scheduler">
